@@ -1,6 +1,6 @@
 " allow users to define characters to skip
 if !exists('g:skip_char_skip_list')
-  let g:skip_chars_regex = '\W'
+  let g:skip_chars_regex = '\(\h\|\s\)'
 endif
 
 if !exists('g:skip_char_nextline_list')
