@@ -31,6 +31,8 @@
   - `let g:skip_chars_regex = "\[(),.;:]"`
 - To set a list of characters to automatically insert a newline character if it is at the end of the line
   - `let g:nextline_chars_regex = "\[;]"`, default only allows for ';'
+- To disable automatically skipping nextline
+  - `let g:skip_char_nextline = 0`
 - To disable default highlight, set
   - `let g:no_default_skip_char_highlight = 1`,
   - In addtion, you can set your own highlight with `highlight SkipCharNextline guifg=#9cdcfe guibg=#444444`
@@ -38,6 +40,3 @@
 ---
 
 ### TODO:
-
-- Allow the user to turn on/off certain features
-- Allow the user to define what delimiters to skip over
