@@ -14,7 +14,7 @@ endif
 " for clearing highlight
 let g:charID = 1
 
-function CaptureKeypress()
+function! CaptureKeypress()
   silent! call matchdelete(g:charID)
   let cursor_at_eol = col('.') == col('$')
   let next_line = match(v:char, g:nextline_chars_regex) != -1 
@@ -30,7 +30,7 @@ function CaptureKeypress()
   endif
 endfunction
 
-function Nextline()
+function! Nextline()
   autocmd! AutoNextline
   " check if previous char is a newline char
   let prev_char_nextline = match(strpart(getline('.'), col('.')-2, 1), g:nextline_chars_regex) != -1
@@ -40,7 +40,7 @@ function Nextline()
   endif
 endfunction
 
-function CallNextline(input_char, offset)
+function! CallNextline(input_char, offset)
   " check if the current input character is a nextline char
   let next_line = match(a:input_char, g:nextline_chars_regex) != -1 
 
@@ -56,7 +56,7 @@ function CallNextline(input_char, offset)
   return next_line && spaces_to_eol
 endfunction
 
-function SkipChar()
+function! SkipChar()
   let input_char = v:char
   let skip_next_char = match(strpart(getline('.'), col('.')-1, 1), g:skip_chars_regex) != -1
   let same_as_next_char = strpart(getline('.'), col('.')-1, 1) == input_char
@@ -74,13 +74,14 @@ function SkipChar()
   endif
 endfunction
 
-function AddSkipCharHighlight()
+  
+
+function! AddSkipCharHighlight()
   return matchaddpos('SkipCharNextline', [[line('.'), col('.'), 1]])
 endfunction
 
 
-
-" start the plugin with autocommand
+" start the plugin with autocommands
 augroup InterceptKeyPress
     autocmd!
     autocmd InsertCharPre * :call CaptureKeypress()
