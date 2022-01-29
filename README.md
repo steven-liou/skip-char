@@ -35,7 +35,8 @@
   - `let g:skip_char_nextline = 0`
 - To disable default highlight, set
   - `let g:no_default_skip_char_highlight = 1`,
-  - In addtion, you can set your own highlight with `highlight SkipCharNextline guifg=#9cdcfe guibg=#444444`
+- In addtion, you can set your own highlight with
+  - `highlight SkipCharNextline guifg=#9cdcfe guibg=#444444`
 
 ---
 
