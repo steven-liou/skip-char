@@ -7,7 +7,7 @@ if !exists('g:skip_char_nextline_list')
   let g:nextline_chars_regex = "\[;]"
 endif
 
-if !exists('g:no_default_skip_char_highlight') || !hlexists('SkipCharNextline')
+if !exists('g:no_default_skip_char_highlight') && !hlexists('SkipCharNextline')
   highlight SkipCharNextline guifg=#9cdcfe guibg=#444444
 endif
 
