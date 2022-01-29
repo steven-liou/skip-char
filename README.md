@@ -8,6 +8,8 @@
 2. Another side feature is smart semi-colon. If `;` is inserted at the end of line (for languages that use ";" to
    terminate a statement), a newline will automatically be inserted if the next character
    the user type is a "word" character.
+   - The smart `;` will be highlighted by default when `;` is inserted at the end of the line.
+   - This indicates that if the next character is alphanumeric, it will automatically be moved to the new line.
 
 ---
 
