@@ -2,6 +2,9 @@
 
 1. A simple plugin that allows the user to type over "non-word" characters. Useful for
    typing over HTML tags (`<` and `>`), strings, parenthesis, brackets, etc.
+
+- Default characters to skip over are characters not in `[a-zA-Z0-9 ]`, or non-alphanumeric or whitespace characters
+
 2. Another side feature is smart semi-colon. If `;` is inserted at the end of line (for languages that use ";" to
    terminate a statement), a newline will automatically be inserted if the next character
    the user type is a "word" character.
