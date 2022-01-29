@@ -3,7 +3,7 @@
 1. A simple plugin that allows the user to type over "non-word" characters. Useful for
    typing over HTML tags (`<` and `>`), strings, parenthesis, brackets, etc.
 
-   - Default characters to skip over are characters not in `[a-zA-Z0-9 ]`, or non-alphanumeric or whitespace characters
+   - Default characters to skip over are characters not in `[a-zA-Z0-9 ]`, or non-alphanumeric/whitespace characters
 
 2. Another side feature is smart semi-colon. If `;` is inserted at the end of line (for languages that use ";" to
    terminate a statement), a newline will automatically be inserted if the next character
@@ -39,7 +39,7 @@
   - `let g:nextline_chars_regex = "\[;]"`, default only allows for `;`
 - To disable automatically skipping nextline
   - `let g:skip_char_nextline = 0`
-  - or you can set it to an empty regex `""`
+  - or set regex to empty string with `let g:nextline_chars_regex = ""`
 - To disable default highlight, set
   - `let g:no_default_skip_char_highlight = 1`,
 - In addtion, you can set your own highlight with
