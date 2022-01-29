@@ -10,6 +10,8 @@
 
 ## Examples
 
+- `|` represents the current cursor position
+
 | Before                                | Type                | After                      |
 | ------------------------------------- | ------------------- | -------------------------- |
 | `\<div\|>\</div>`                     | `>`                 | `\<div>\|\</div>`          |
