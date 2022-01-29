@@ -17,12 +17,12 @@
 
 - `|` represents the current cursor position
 
-| Before                                | Type                | After                      |
-| ------------------------------------- | ------------------- | -------------------------- |
-| `\<div\|>\</div>`                     | `>`                 | `\<div>\|\</div>`          |
-| `\<div>\|\</>`                        | `</`                | `\<div></\|>`              |
-| `let a = 1;\| (cursor is waiting...)` | `let b = 2 `        | `let a = 1;<br> let b = 2` |
-| `let a = 1;\| (cursor is waiting...)` | `\<SPACE>let b = 2` | `let a = 1; let b = 2 `    |
+| Before                                | Type               | After                      |
+| ------------------------------------- | ------------------ | -------------------------- |
+| `<div\|></div>`                       | `>`                | `<div>\|</div>`            |
+| `<div>\|</>`                          | `</`               | `<div></\|>`               |
+| `let a = 1;\| (cursor is waiting...)` | `let b = 2 `       | `let a = 1;<br> let b = 2` |
+| `let a = 1;\| (cursor is waiting...)` | `<SPACE>let b = 2` | `let a = 1; let b = 2 `    |
 
 - Examples 1 and 2 show how typing over non-alphanumeric characters work
 - Examples 3 and 4 show that after typing `;` at the end of line, if you follow up with typing a non-white space character, it will automatically insert a `<CR>` and move to the next line for you.
