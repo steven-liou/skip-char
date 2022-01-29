@@ -7,19 +7,12 @@ if !exists('g:skip_char_nextline_list')
   let g:nextline_chars_regex = "\[;]"
 endif
 
+if !exists('g:no_default_skip_char_highlight') 
+  highlight SkipCharNextline guifg=#9cdcfe guibg=#444444
+endif
+
+" for clearing highlight
 let g:charID = 1
-
-function CallNextline(input_char, offset)
-  let next_line = 1
-  if a:offset > 0
-    " check if next character is also a nextline character if there is an offset
-    let next_line = match(strpart(getline('.'), col('.')-1 ,1), g:nextline_chars_regex) != -1 
-  endif
-
-  let cursor_at_eol = col('.') + a:offset == col('$')
-  let next_line = next_line && match(a:input_char, g:nextline_chars_regex) != -1 
-  return next_line && cursor_at_eol
-endfunction
 
 function CaptureKeypress()
   silent! call matchdelete(g:charID)
@@ -39,6 +32,7 @@ endfunction
 
 function Nextline()
   autocmd! AutoNextline
+  " check if previous char is a newline char
   let prev_char_nextline = match(strpart(getline('.'), col('.')-2, 1), g:nextline_chars_regex) != -1
 
   if match(v:char, '\w') != -1 && prev_char_nextline
@@ -46,10 +40,27 @@ function Nextline()
   endif
 endfunction
 
+function CallNextline(input_char, offset)
+  " check if the current input character is a nextline char
+  let next_line = match(a:input_char, g:nextline_chars_regex) != -1 
+
+  " check if next character is also a nextline character if there is an offset
+  if a:offset > 0 && next_line
+    let next_line = match(strpart(getline('.'), col('.')-1 ,1), g:nextline_chars_regex) != -1 
+  endif
+
+  " check if only space characters exist after the nextline char
+  let text_to_eol = strpart(getline('.'), col('.')-1+a:offset)
+  let spaces_to_eol = match(text_to_eol, '\S') == -1
+
+  return next_line && spaces_to_eol
+endfunction
+
 function SkipChar()
   let input_char = v:char
   let skip_next_char = match(strpart(getline('.'), col('.')-1, 1), g:skip_chars_regex) != -1
   let same_as_next_char = strpart(getline('.'), col('.')-1, 1) == input_char
+
   if skip_next_char && same_as_next_char
     call feedkeys("\<Right>")
     let v:char = ''
@@ -62,16 +73,14 @@ function SkipChar()
     augroup END
   endif
 endfunction
-  
 
 function AddSkipCharHighlight()
-  return matchaddpos('SkipCharNextline', [[line('.'), col('.'), 1], 0])
+  return matchaddpos('SkipCharNextline', [[line('.'), col('.'), 1]])
 endfunction
 
-if !exists('g:no_default_skip_char_highlight') 
-  highlight SkipCharNextline guifg=#9cdcfe guibg=#444444
-endif
 
+
+" start the plugin with autocommand
 augroup InterceptKeyPress
     autocmd!
     autocmd InsertCharPre * :call CaptureKeypress()
