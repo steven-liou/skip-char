@@ -11,6 +11,10 @@ if !exists('g:no_default_skip_char_highlight')
   highlight SkipCharNextline guifg=#9cdcfe guibg=#444444
 endif
 
+if !exists('g:skip_char_nextline')
+  let g:skip_char_nextline = 1
+endif
+
 " for clearing highlight
 let g:charID = 1
 
@@ -41,6 +45,10 @@ function! Nextline()
 endfunction
 
 function! CallNextline(input_char, offset)
+  " if user disable automatic nextline, return immediately
+  if !g:skip_char_nextline
+    return 0
+  endif
   " check if the current input character is a nextline char
   let next_line = match(a:input_char, g:nextline_chars_regex) != -1 
 
