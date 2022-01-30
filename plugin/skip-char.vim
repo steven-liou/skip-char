@@ -1,10 +1,10 @@
 " allow users to define characters to skip
-if !exists('g:skip_char_skip_list')
-  let g:skip_chars_regex = '\v[^a-zA-Z0-9 ]'
+if !exists('g:skip_char_regex')
+  let g:skip_char_regex = '\v[^a-zA-Z0-9 ]'
 endif
 
-if !exists('g:skip_char_nextline_list')
-  let g:nextline_chars_regex = "\[;]"
+if !exists('g:nextline_char_regex')
+  let g:nextline_char_regex = "\[;]"
 endif
 
 if !exists('g:no_default_skip_char_highlight') && !hlexists('SkipCharNextline')
@@ -21,8 +21,8 @@ let g:charID = 1
 function! CaptureKeypress()
   silent! call matchdelete(g:charID)
   let cursor_at_eol = col('.') == col('$')
-  let next_line = match(v:char, g:nextline_chars_regex) != -1 
-  let skip_char = match(v:char, g:skip_chars_regex) != -1 
+  let next_line = match(v:char, g:nextline_char_regex) != -1 
+  let skip_char = match(v:char, g:skip_char_regex) != -1 
 
   if CallNextline(v:char, 0)
     let g:charID = AddSkipCharHighlight()
@@ -37,7 +37,7 @@ endfunction
 function! Nextline()
   autocmd! AutoNextline
   " check if previous char is a newline char
-  let prev_char_nextline = match(strpart(getline('.'), col('.')-2, 1), g:nextline_chars_regex) != -1
+  let prev_char_nextline = match(strpart(getline('.'), col('.')-2, 1), g:nextline_char_regex) != -1
 
   if match(v:char, '\w') != -1 && prev_char_nextline
     let v:char = "\<CR>" . v:char
@@ -50,11 +50,11 @@ function! CallNextline(input_char, offset)
     return 0
   endif
   " check if the current input character is a nextline char
-  let next_line = match(a:input_char, g:nextline_chars_regex) != -1 
+  let next_line = match(a:input_char, g:nextline_char_regex) != -1 
 
   " check if next character is also a nextline character if there is an offset
   if a:offset > 0 && next_line
-    let next_line = match(strpart(getline('.'), col('.')-1 ,1), g:nextline_chars_regex) != -1 
+    let next_line = match(strpart(getline('.'), col('.')-1 ,1), g:nextline_char_regex) != -1 
   endif
 
   " check if only space characters exist after the nextline char
@@ -66,7 +66,7 @@ endfunction
 
 function! SkipChar()
   let input_char = v:char
-  let skip_next_char = match(strpart(getline('.'), col('.')-1, 1), g:skip_chars_regex) != -1
+  let skip_next_char = match(strpart(getline('.'), col('.')-1, 1), g:skip_char_regex) != -1
   let same_as_next_char = strpart(getline('.'), col('.')-1, 1) == input_char
 
   if skip_next_char && same_as_next_char

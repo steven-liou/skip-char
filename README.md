@@ -33,13 +33,13 @@
 ### Settings
 
 - To set a list of characters to type over, set the regex for the characters
-  - `let g:skip_chars_regex = "\[(),.;:]"`
+  - `let g:skip_char_regex = "\[(),.;:]"`
   - To dsiable skipping characters, you can set it to an empty regex `""`
 - To set a list of characters to automatically insert a newline character if it is at the end of the line
-  - `let g:nextline_chars_regex = "\[;]"`, default only allows for `;`
+  - `let g:nextline_char_regex = "\[;]"`, default only allows for `;`
 - To disable automatically skipping nextline
   - `let g:skip_char_nextline = 0`
-  - or set regex to empty string with `let g:nextline_chars_regex = ""`
+  - or set regex to empty string with `let g:nextline_char_regex = ""`
 - To disable default highlight, set
   - `let g:no_default_skip_char_highlight = 1`,
 - In addtion, you can set your own highlight with
