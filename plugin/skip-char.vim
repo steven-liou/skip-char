@@ -1,6 +1,6 @@
 " allow users to define characters to skip
 if !exists('g:skip_char_regex')
-  let g:skip_char_regex = '\v[^a-zA-Z0-9 ]'
+  let g:skip_char_regex = "\[<>;:,/]"
 endif
 
 if !exists('g:nextline_char_regex')
