@@ -1,9 +1,9 @@
 # Skip-Char
 
 1. A simple plugin that allows the user to type over delimiter characters. Useful for
-   typing over HTML tags (`<` and `>`), `,`, `;`, `:`, `|`, and `/`.
+   typing over HTML tags (`<` and `>`), `,`, `;`, `|`, and `/`.
 
-   - Default characters to skip over are characters in `[<>;:,/|]`
+   - Default characters to skip over are characters in `[<>;,/|]`
    - However, you are free to use any regex to define what charaters to skip over
 
 2. Another side feature is smart semi-colon. If `;` is inserted at the end of line (for languages that use ";" to
