@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Volumes/D/Coding/Vim/skip-char/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+AddSkipCharHighlight	plugin/skip-char.vim	/^function! AddSkipCharHighlight()$/;"	f
+AutoNextline	plugin/skip-char.vim	/^    augroup AutoNextline$/;"	a
+CallNextline	plugin/skip-char.vim	/^function! CallNextline(input_char, offset)$/;"	f
+CaptureKeypress	plugin/skip-char.vim	/^function! CaptureKeypress()$/;"	f
+Examples	README.md	/^## Examples$/;"	s	chapter:Skip-Char
+InterceptKeyPress	plugin/skip-char.vim	/^augroup InterceptKeyPress$/;"	a
+Nextline	plugin/skip-char.vim	/^function! Nextline()$/;"	f
+Settings	README.md	/^### Settings$/;"	S	section:Skip-Char""Examples
+Skip-Char	README.md	/^# Skip-Char$/;"	c
+SkipChar	plugin/skip-char.vim	/^function! SkipChar()$/;"	f
+TODO:	README.md	/^### TODO:$/;"	S	section:Skip-Char""Examples
+g:charID	plugin/skip-char.vim	/^    let g:charID = AddSkipCharHighlight()$/;"	v
+g:charID	plugin/skip-char.vim	/^let g:charID = 1$/;"	v
+g:nextline_char_regex	plugin/skip-char.vim	/^  let g:nextline_char_regex = "\\[;]"$/;"	v
+g:skip_char_nextline	plugin/skip-char.vim	/^  let g:skip_char_nextline = 1$/;"	v
+g:skip_char_regex	plugin/skip-char.vim	/^  let g:skip_char_regex = "\\[>;,\/|]"$/;"	v
+g:smart_enter_filetypes	plugin/skip-char.vim	/^  let g:smart_enter_filetypes = ["go", "python", "ruby"]$/;"	v
