@@ -46,7 +46,8 @@ function! Nextline()
 
   if match(v:char, '\w') != -1 && prev_char_nextline
     if index(g:smart_enter_filetypes, &ft) >= 0
-      call feedkeys("\<BS>")
+      let removed_trailing_semi = substitute(starpart(getline('.'), 0), ";$", '', '')
+      call setline(line('.'), removed_trailing_semi)
     endif
     let v:char = "\<CR>" . v:char
   endif
