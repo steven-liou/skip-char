@@ -46,10 +46,9 @@ function! Nextline()
 
   if match(v:char, '\w') != -1 && prev_char_nextline
     if index(g:smart_enter_filetypes, &ft) >= 0
-      let v:char = "\<BS>\<CR>" . v:char
-    else
-      let v:char = "\<CR>" . v:char
+      call feedkeys("\<BS>")
     endif
+    let v:char = "\<CR>" . v:char
   endif
 endfunction
 
