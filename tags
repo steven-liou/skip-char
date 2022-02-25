@@ -23,6 +23,6 @@ TODO:	README.md	/^### TODO:$/;"	S	section:Skip-Char""Examples
 g:charID	plugin/skip-char.vim	/^    let g:charID = AddSkipCharHighlight()$/;"	v
 g:charID	plugin/skip-char.vim	/^let g:charID = 1$/;"	v
 g:nextline_char_regex	plugin/skip-char.vim	/^  let g:nextline_char_regex = "\\[;]"$/;"	v
+g:semi_as_enter_filetypes	plugin/skip-char.vim	/^  let g:semi_as_enter_filetypes = ["go", "python", "ruby"]$/;"	v
 g:skip_char_nextline	plugin/skip-char.vim	/^  let g:skip_char_nextline = 1$/;"	v
 g:skip_char_regex	plugin/skip-char.vim	/^  let g:skip_char_regex = "\\[>;,\/|]"$/;"	v
-g:smart_enter_filetypes	plugin/skip-char.vim	/^  let g:smart_enter_filetypes = ["go", "python", "ruby"]$/;"	v

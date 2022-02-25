@@ -15,8 +15,8 @@ if !exists('g:skip_char_nextline')
   let g:skip_char_nextline = 1
 endif
 
-if !exists('g:smart_enter_filetypes')
-  let g:smart_enter_filetypes = ["go", "python", "ruby"]
+if !exists('g:semi_as_enter_filetypes')
+  let g:semi_as_enter_filetypes = ["go", "python", "ruby"]
 endif
 
 
@@ -45,7 +45,7 @@ function! Nextline()
   let prev_char_nextline = match(strpart(getline('.'), col('.')-2, 1), g:nextline_char_regex) != -1
 
   if match(v:char, '\w') != -1 && prev_char_nextline
-    if index(g:smart_enter_filetypes, &ft) >= 0
+    if index(g:semi_as_enter_filetypes, &ft) >= 0
       let removed_trailing_semi = substitute(strpart(getline('.'), 0), ";$", '', '')
       call feedkeys("\<C-O>:call setline(line('.') - 1, '" . removed_trailing_semi . "')\<CR>")
     endif

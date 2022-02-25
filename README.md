@@ -11,6 +11,7 @@
    the user type is a "word" character.
    - The smart `;` will be highlighted by default when `;` is inserted at the end of the line.
    - This indicates that if the next character is alphanumeric, it will automatically be moved to the new line.
+   - For programming languages that don't need `;` at end of line, the smart `;` acts as `<CR>`, so it makes going to next line easier to type. (see Settings for setting up filetypes for this behavior)
 
 ---
 
@@ -36,11 +37,13 @@
 - To set a list of characters to type over, set the regex for the characters
   - `let g:skip_char_regex = "\[(),.;:]"`
   - To dsiable skipping characters, you can set it to an empty regex `""`
-- To set a list of characters to automatically insert a newline character if it is at the end of the line
-  - `let g:nextline_char_regex = "\[;]"`, default only allows for `;`
+- To set a list of characters to automatically insert a newline character if at the end of the line
+  - `let g:nextline_char_regex = "\[;]"`, default allows for `;`
 - To disable automatically skipping nextline
   - `let g:skip_char_nextline = 0`
   - or set regex to empty string with `let g:nextline_char_regex = ""`
+- To use smart `;` as `<CR>`, you can specify the file types in a list
+  - Default `let g:semi_as_enter_filetypes = ["go", "python", "ruby"]`
 - To disable default highlight, set
   - `let g:no_default_skip_char_highlight = 1`,
 - In addtion, you can set your own highlight with
